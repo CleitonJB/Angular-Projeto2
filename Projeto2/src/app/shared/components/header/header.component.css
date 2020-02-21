@@ -1,0 +1,94 @@
+mat-toolbar{
+    position: relative;
+    max-width: 100%;
+    background: black;
+    margin-bottom: 10px;
+    color: white;
+    border-bottom: 2px solid rgb(5, 134, 255);
+}
+
+.div_Logo{
+    position: absolute;
+    left: 10px;
+}
+
+.div_Logo h1{
+    font-size: 2vw;
+}
+
+/* RESPONSIVO */
+@media screen and (min-width: 50px){
+    .div_Logo h1{
+        font-size: 5.6vw;
+    }
+
+    .div_Buttons a{
+        font-size: 2.4vw;
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .div_Logo h1{
+        font-size: 5.6vw;
+    }
+
+    .div_Buttons a{
+        font-size: 2.4vw;
+        margin: 10px;
+    }
+}
+
+@media screen and (min-width: 550px){
+    .div_Logo h1{
+        font-size: 4.6vw;
+    }
+
+    .div_Buttons a{
+        font-size: 2.2vw;
+        margin: 40px;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .div_Logo h1{
+        font-size: 3.2vw;
+    }
+
+    .div_Buttons a{
+        font-size: 2.2vw;
+        margin: 30px;
+    }
+}
+
+@media screen and (min-width: 800px){
+    .div_Logo h1{
+        font-size: 3.2vw;
+    }
+
+    .div_Buttons a{
+        font-size: 2.2vw;
+        margin: 30px;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .div_Logo h1{
+        font-size: 2.7vw;
+    }
+
+    .div_Buttons a{
+        font-size: 1.7vw;
+        margin: 20px;
+    }
+}
+
+.div_Buttons{
+    position: absolute;
+    right: 10px;
+}
+
+.div_Buttons a{
+    color: white;
+    text-decoration: none;
+}   

@@ -1,0 +1,115 @@
+<!-- <p>products works!</p> -->
+
+<!-- ********* SEGUNDO BLOCO ********* -->
+<div class="div_Table">
+    <h1>Lista de produtos</h1>
+    
+    <table>
+        <thead>
+          <tr>
+            <th class="id"> id </th>
+            <th> Descrição   </th>
+            <th> Cod inc     </th>
+            <th> Inclusão    </th>
+            <th> Cod alt     </th>
+            <th> Alteracão   </th>
+            <th>             </th>
+            <th>             </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produto of produtos">
+            <td>{{ produto.TABPROD_seq_tabprod  }}</td>
+            <td>{{ produto.TABPROD_desc         }}</td>
+            <td>{{ produto.cod_oper_inc         }}</td>
+            <td>{{ produto.dat_inclusao  | date }}</td>
+            <td>{{ produto.cod_oper_alt         }}</td>
+            <td>{{ produto.dat_alteracao | date }}</td>
+            <td>
+              <button type="button" class="tableButton" (click)="editProduto(produto)" mat-stroked-button color="primary"><mat-icon>edit</mat-icon></button>
+              <button type="button" class="tableButton" (click)="deleteProduto(produto)" mat-stroked-button color="warn"><mat-icon>delete</mat-icon></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<!-- ********* SEGUNDO BLOCO ********* -->
+<div class="div_Editar_Adicionar">
+  <h1> Adicionar/Atualizar um produto </h1>
+
+  <div class="div_Form">
+    <form #f="ngForm" (ngSubmit)="f.form.valid && saveProduto(f)" novalidate>
+      <!-- Id -->
+      <div class="formContent">
+        <mat-form-field appearance="outline">
+          <mat-label for="TABPROD_seq_tabprod">TABPROD_seq_tabprod</mat-label>
+          <input matInput type="number" [(ngModel)]="produto.TABPROD_seq_tabprod" name="TABPROD_seq_tabprod" 
+          #TABPROD_seq_tabprod="ngModel" [ngClass]="{ 'is-invalid': f.submitted && TABPROD_seq_tabprod.invalid }" 
+          placeholder="Digite o TABPROD_seq_tabprod..." required>
+        </mat-form-field>
+      </div>
+
+      <!-- Descrição -->
+      <div class="formContent">
+        <mat-form-field appearance="outline">
+          <mat-label for="TABPROD_desc">TABPROD_desc</mat-label>
+          <input matInput type="text" [(ngModel)]="produto.TABPROD_desc" name="TABPROD_desc" 
+          #TABPROD_desc="ngModel" [ngClass]="{ 'is-invalid': f.submitted && TABPROD_desc.invalid }" 
+          placeholder="Digite o TABPROD_desc..." required>
+        </mat-form-field>
+        <!--Erro-->
+      </div>
+
+      <!-- Código de inclusão -->
+      <div class="formContent">
+        <mat-form-field appearance="outline">
+          <mat-label for="cod_oper_inc">cod_oper_inc</mat-label>
+          <input matInput type="number" [(ngModel)]="produto.cod_oper_inc" name="cod_oper_inc" 
+          #cod_oper_inc="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cod_oper_inc.invalid }" 
+          placeholder="Digite o cod_oper_inc..." required>
+        </mat-form-field>
+        <!--Erro-->
+      </div>
+
+      <!-- Data de inclusão -->
+      <div class="formContent">
+        <mat-form-field appearance="outline">
+          <mat-label for="dat_inclusao">dat_inclusao</mat-label>
+          <input matInput type="text" [(ngModel)]="produto.dat_inclusao" name="dat_inclusao" 
+          #dat_inclusao="ngModel" [ngClass]="{ 'is-invalid': f.submitted && dat_inclusao.invalid }" 
+          placeholder="Digite o dat_inclusao..." required>
+        </mat-form-field>
+        <!--Erro-->
+      </div>
+
+      <!-- Código de alteração -->
+      <div class="formContent">
+        <mat-form-field appearance="outline">
+          <mat-label for="cod_oper_alt">cod_oper_alt</mat-label>
+          <input matInput type="number" [(ngModel)]="produto.cod_oper_alt" name="cod_oper_alt" 
+          #cod_oper_alt="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cod_oper_alt.invalid }" 
+          placeholder="Digite o cod_oper_alt..." required>
+        </mat-form-field>
+        <!--Erro-->
+      </div>
+
+      <!-- Data de alteração -->
+      <div class="formContent">
+        <mat-form-field appearance="outline">
+          <mat-label for="dat_alteracao">dat_alteracao</mat-label>
+          <input matInput type="text" [(ngModel)]="produto.dat_alteracao" name="dat_alteracao" 
+          #dat_alteracao="ngModel" [ngClass]="{ 'is-invalid': f.submitted && dat_alteracao.invalid }" 
+          placeholder="Digite o dat_alteracao..." required>
+        </mat-form-field>
+        <!--Erro-->
+      </div>
+
+      <!-- Botões do formulário -->
+      <div class="formButtons">
+        <button mat-stroked-button type="submit" color="primary">Salvar</button>
+        <button mat-stroked-button type="reset" (click)="cleanForm(f)" color="warn">Limpar</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<!-- <p>login works!</p> -->
+
+<div class="div_Login">
+    <form [formGroup]="signinForm" (ngSubmit)="loginUser()">
+        <h1>Login</h1>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Login</mat-label>
+            <input matInput type="text" formControlName="OPER_login" placeholder="Informe o seu login..." required>
+            <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput [type]="hide ? 'text' : 'password'" formControlName="OPER_senha" placeholder="Informe a sua senha..." required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <div class="div_resetPassword">
+            <a [routerLink]="['/reset-password']" routerLinkActive="active">Forgot your password?</a>
+        </div>
+
+        <div class="div_bt_submit">
+            <button type="submit" mat-stroked-button color="primary">Sign in<mat-icon matSuffix>face</mat-icon></button>
+        </div>
+
+    </form>
+</div>

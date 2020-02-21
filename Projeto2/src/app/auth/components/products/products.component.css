@@ -1,0 +1,98 @@
+/* ------------ PRIMEIRO BLOCO ------------*/
+.div_Table{
+    padding: 20px;
+    max-width: 60%;
+    margin: 40px auto;
+    text-align: center;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 2px 5px 8px rgba(10, 10, 10, 0.4);
+}
+
+td{
+    position: relative;
+    border-bottom: 1px solid gray;
+    color: black;
+}
+
+tr {
+    text-align: center;
+}
+
+th{
+    background: black;
+    color: white;
+    font-weight: normal;
+    padding: 4px 0px;
+}
+
+table{
+    max-width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    padding: 10px;
+}
+
+@media screen and (max-width: 450px){
+    table{
+       width: 90%;
+    }
+
+    table th{
+        width: auto;
+        font-size: 2.4vw;
+    }
+
+    table td{
+        font-size: 2.2vw;
+    }
+
+    mat-icon{
+        max-width: 5%;
+    }
+}
+
+.id{
+    width: 7%;
+}
+
+.descricao{
+    margin: auto;
+    text-align: left;
+}
+
+/* ------------ SEGUNDO BLOCO ------------*/
+
+.div_Editar_Adicionar{
+    text-align: center;
+    width: 60%;
+    margin: 40px auto 110px auto;
+    text-align: center;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 20px 0px;
+    box-shadow: 2px 5px 8px rgba(10, 10, 10, 0.4);
+}
+
+.div_Editar_Adicionar h1{
+    margin: 30px 0px;
+}
+
+.formContent{
+    width: 100%;
+    margin: 0;
+}
+
+mat-form-field {
+    width: 60%;
+    margin: -5px;
+}
+
+.formButtons{
+    margin: auto;
+}
+
+.formButtons button {
+    margin: 0px 20px;
+    width: 20%;
+}
