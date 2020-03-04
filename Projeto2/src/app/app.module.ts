@@ -37,11 +37,6 @@ import { HttpErrorInterceptor } from './interceptors/HttpErrorInterceptor';
     AuthModule
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorInterceptor,
-      multi: true,
-    },
     AuthService, 
     ProdutoService],
   bootstrap: [AppComponent]

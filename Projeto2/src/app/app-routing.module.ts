@@ -1,4 +1,3 @@
-import { HeaderComponent } from './shared/components/header/header.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

@@ -33,8 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonToggleModule,
     MatIconModule,
     MatButtonModule,             //Botões
-    MatListModule               //Grid list
-    
+    MatListModule,               //Grid list
   ],
   exports: [
     LoginComponent, 

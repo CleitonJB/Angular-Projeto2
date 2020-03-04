@@ -1,29 +1,31 @@
 <!-- <p>login works!</p> -->
 
 <div class="div_Login">
-    <form [formGroup]="signinForm" (ngSubmit)="loginUser()">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <h1>Login</h1>
 
+        <!-- Nome do usuário -->
         <mat-form-field appearance="outline">
-            <mat-label>Login</mat-label>
-            <input matInput type="text" formControlName="OPER_login" placeholder="Informe o seu login..." required>
-            <mat-icon matSuffix>face</mat-icon>
+            <mat-label>Usuário</mat-label>
+            <input matInput type="text" formControlName="OPER_login" name="OPER_login" placeholder="Informe o seu login..." required>
+            <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
 
+        <!-- Senha do usuário -->
         <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
-            <input matInput [type]="hide ? 'text' : 'password'" formControlName="OPER_senha" placeholder="Informe a sua senha..." required>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-            </button>
-        </mat-form-field>
+            <input matInput type="text" formControlName="OPER_senha" name="OPER_senha" placeholder="Informe a sua senha...">
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
 
+        <!-- Esqueceu a senha -->
         <div class="div_resetPassword">
             <a [routerLink]="['/reset-password']" routerLinkActive="active">Forgot your password?</a>
         </div>
 
+        <!-- Botões -->
         <div class="div_bt_submit">
-            <button type="submit" mat-stroked-button color="primary">Sign in<mat-icon matSuffix>face</mat-icon></button>
+            <button type="submit" mat-stroked-button color="primary">Sign in <mat-icon matSuffix>send</mat-icon></button>
         </div>
 
     </form>

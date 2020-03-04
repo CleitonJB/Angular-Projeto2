@@ -1,85 +1,60 @@
 import { Injectable } from '@angular/core';
 
 //meus imports
-import { Observable, throwError, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { User } from './../../../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  endpoint: string = 'http://vcmobile.com.br/VictorProjetoEstagio/Hackathon/WebApi/V01';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');  
-  currentUser = {};
 
-  constructor(
-    private http: HttpClient,
-    public router: Router
-  ) {}
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
+
+  //Header
+  httpOption = {
+    headers: new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Cache-Control': 'no-cache',
+      'Access-Control-Allow-Origin': '*', 
+      //'Access-Control-Allow-Methods': 'HEAD, GET, POST, PUT, PATCH, DELETE', 
+      //'Access-Control-Allow-Headers': '*',
+    }) 
+  };
+
+ loginUrl = 'http://vcmobile.com.br/VictorProjetoEstagio/Hackathon/WebApi/V01/Operadores_ValidarLogin_Post';
+
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  public get currentUserValue(): User{
+    return this.currentUserSubject.value;
+  }
  
-  // Sign-up (Cadastro)
-  signUp(user: User): Observable<any> {
-    let api = `${this.endpoint}/Operadores_Incluir_Post`;
-    return this.http.post(api, user)
-      .pipe(
-        catchError(this.handleError)
-      )
+  loginUser(OPER_login: string, OPER_senha: string) {
+    return this.http.post<any>(this.loginUrl, { OPER_login, OPER_senha }, this.httpOption).pipe(map(user => {
+      // login successful if there's a jwt token in the response
+      if(user && user.token){
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+      }
+
+      return user;
+    }));
   }
 
-  // Sign-in (Login)
-  signIn(user: User) {
-    return this.http.post<any>(`${this.endpoint}/Operadores_ValidarLogin_Post`, user)
-      .subscribe((res: any) => {
-        localStorage.setItem('access_token', res.token)
-        this.getUserProfile(res._id).subscribe((res) => {
-          this.currentUser = res;
-          this.router.navigate(['user-profile/' + res.msg._id]);
-        })
-      })
+  logout(){
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
   }
 
-  getToken() {
-    return localStorage.getItem('access_token');
-  }
-
-  get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access_token');
-    return (authToken !== null) ? true : false;
-  }
-
-  doLogout() {
-    let removeToken = localStorage.removeItem('access_token');
-    if (removeToken == null) {
-      this.router.navigate(['log-in']);
-    }
-  }
-  
-  // User profile
-  getUserProfile(id): Observable<any> {
-    let api = `${this.endpoint}/user-profile/${id}`;
-    return this.http.get(api, { headers: this.headers }).pipe(
-      map((res: Response) => {
-        return res || {}
-      }),
-      catchError(this.handleError)
-    )
-  }
-
-  // Error manager
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
-  
-      return of(result as T);
-    };
-  }
-  
-  private log(message: string) {
-    console.log(message);
-  }
+  //Gerenciador de erros
 
 }

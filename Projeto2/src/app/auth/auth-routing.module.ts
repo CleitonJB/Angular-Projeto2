@@ -5,8 +5,6 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductsComponent } from './components/products/products.component';
-//não precisa
-import { AuthGuard } from "./../shared/auth_sc/auth.guard";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
