@@ -1,32 +1,45 @@
-<!-- <p>login works!</p> -->
 
 <div class="div_Login">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+
+        <!-- Erro no formulário -->
+        <div *ngIf="error" class="div_Error">{{ error }}</div>
+
         <h1>Login</h1>
 
         <!-- Nome do usuário -->
         <mat-form-field appearance="outline">
-            <mat-label>Usuário</mat-label>
-            <input matInput type="text" formControlName="OPER_login" name="OPER_login" placeholder="Informe o seu login..." required>
+            <mat-label for="OPER_login">Usuário</mat-label>
+            <input matInput type="text" formControlName="OPER_login" placeholder="Informe o seu login..." 
+            [ngClass]="{ 'is-invalid': submitted && fval.OPER_login.errors }" required>
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
+        <!-- Erro -->
+        <div *ngIf="fval.OPER_login.touched && fval.OPER_login.errors" class="invalid_feedback">
+            <div *ngIf="fval.OPER_login.errors.required">Usuário é obrigatório</div>
+        </div>
 
         <!-- Senha do usuário -->
         <mat-form-field appearance="outline">
-            <mat-label>Senha</mat-label>
-            <input matInput type="text" formControlName="OPER_senha" name="OPER_senha" placeholder="Informe a sua senha...">
+            <mat-label for="OPER_senha">Senha</mat-label>
+            <input matInput type="password" formControlName="OPER_senha" placeholder="Informe a sua senha..." 
+            [ngClass]="{ 'is-invalid': submitted && fval.OPER_senha.errors }" required>
             <mat-icon matSuffix>person</mat-icon>
-          </mat-form-field>
+        </mat-form-field>
+        <!-- Erro -->
+        <div *ngIf="fval.OPER_senha.touched && fval.OPER_senha.errors" class="invalid_feedback">
+            <div *ngIf="fval.OPER_senha.errors.required">Senha é obrigatória</div>
+        </div>
+          
 
         <!-- Esqueceu a senha -->
         <div class="div_resetPassword">
-            <a [routerLink]="['/reset-password']" routerLinkActive="active">Forgot your password?</a>
+            <a [routerLink]="['/reset-password']" routerLinkActive="active">Esqueceu a sua senha?</a>
         </div>
 
         <!-- Botões -->
         <div class="div_bt_submit">
-            <button type="submit" mat-stroked-button color="primary">Sign in <mat-icon matSuffix>send</mat-icon></button>
+            <button [disabled]="loginForm.invalid" type="submit" mat-stroked-button color="primary">Sign in <mat-icon matSuffix>logout</mat-icon></button>
         </div>
-
     </form>
 </div>

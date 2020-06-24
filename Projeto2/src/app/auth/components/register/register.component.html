@@ -1,55 +1,49 @@
 <!-- <p>register works!</p> -->
 
 <div class="div_Register">
-    <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
+    <form #rgForm="ngForm" (ngSubmit)="onFormSubmit()">
 
         <h1>Register</h1>
 
-        <!-- NOME -->
+        <!-- LOGIN -->
         <mat-form-field appearance="outline">
-            <mat-label>Login</mat-label>
-            <input type="text" matInput formControlName="login" placeholder="Informe o seu login..." required>
+            <mat-label for="OPER_login">Usuário</mat-label>
+            <input type="text" matInput placeholder="Informe o usuário..." name="OPER_login"
+            [(ngModel)]="registerForm.OPER_login" #OPER_login="ngModel" required>
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
+        <!-- ERRO - LOGIN -->
+        <div class="Erro" *ngIf="OPER_login.touched && OPER_login.invalid">
+            <p>Usuário é obrigatório</p>
+        </div>
+
+        <!-- NOME OPERADOR -->
+        <mat-form-field appearance="outline">
+            <mat-label for="OPER_nome_operador">Nome do operador</mat-label>
+            <input type="text" matInput placeholder="Informe o nome do operador..." name="OPER_nome_operador"
+            [(ngModel)]="registerForm.OPER_nome_operador" #OPER_nome_operador="ngModel" required>
+            <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <!-- ERRO - NOME OPERADOR -->
+        <div class="Erro" *ngIf="OPER_nome_operador.touched && OPER_nome_operador.invalid">
+            <p>Nome do operador é obrigatório</p>
+        </div>
 
         <!-- SENHA -->
         <mat-form-field appearance="outline">
-            <mat-label>Senha</mat-label>
-            <input type="password" matInput formControlName="password" placeholder="Informe a sua senha..." required>
+            <mat-label for="OPER_senha">Senha</mat-label>
+            <input type="password" matInput placeholder="Informe a senha..." name="OPER_senha" 
+            [(ngModel)]="registerForm.OPER_senha" #OPER_senha="ngModel" required>
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
+        <!-- ERRO - SENHA -->
+        <div class="Erro" *ngIf="OPER_senha.touched && OPER_senha.invalid">
+            <p>Senha é obrigatório</p>
+        </div>
 
-        <!-- Nome Operador -->
-        <!--
-        <mat-form-field appearance="outline">
-            <mat-label>Nome de Operador</mat-label>
-            <input type="text" required matInput placeholder="Digite seu nome de operador..." name="OPER_nome_operador" [(ngModel)]="usuario.OPER_nome_operador" >
-            <mat-icon matSuffix>face</mat-icon>
-        </mat-form-field>
-        -->
-
-        <!-- EMAIL -->
-        <!--
-        <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="Digite seu email..." required name="Email" ngModel #Email="ngModel">
-            <mat-icon matSuffix>face</mat-icon>
-            <mat-hint>Hint</mat-hint> 
-        </mat-form-field>
-        -->
-
-        <!-- SENHA 
-        <mat-form-field appearance="outline">
-            <mat-label>Senha</mat-label>
-            <input ngModel name="OPER_senha" matInput placeholder="Digite sua senha..." [type]="hide ? 'text' : 'password'" required name="Senha" ngModel #Senha="ngModel">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-            </button>
-        </mat-form-field>
-        -->
-
+        <!-- Enviar -->
         <div class="div_bt_submit">
-            <button type="submit" mat-stroked-button color="primary">Sign up <mat-icon matSuffix>send</mat-icon></button>
+            <button [disabled]="rgForm.invalid" type="submit" mat-stroked-button color="primary">Sign up <mat-icon matSuffix>lock_outline</mat-icon></button>
         </div>
     </form>
 </div>

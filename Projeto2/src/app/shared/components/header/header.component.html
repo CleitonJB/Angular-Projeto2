@@ -1,13 +1,12 @@
 <mat-toolbar>
     <div class="div_Logo">
-        <h1>My project</h1>
+        <a [routerLink]="['/home']" routerLinkActive="active">Estagio <mat-icon>account_circle</mat-icon></a>
     </div>
 
     <div class="div_Buttons">
-        <a [routerLink]="['/produtos']" routerLinkActive="active">Produtos <mat-icon>list</mat-icon></a>
-        <a [routerLink]="['/login']" routerLinkActive="active">Login <mat-icon>person</mat-icon></a>
-        <a [routerLink]="['/register']" routerLinkActive="active">Register <mat-icon>save</mat-icon></a>
-        <a [routerLink]="['/reset-password']" routerLinkActive="active">Reset Password <mat-icon>refresh</mat-icon></a>
+        <a [routerLink]="['/produtos']" routerLinkActive="active">Produtos <mat-icon  matSuffix>format_list_numbered</mat-icon></a>
+        <a [routerLink]="['/login']" routerLinkActive="active">Login <mat-icon  matSuffix>logout</mat-icon></a>
+        <a [routerLink]="['/register']" routerLinkActive="active">Register <mat-icon  matSuffix>lock_outline</mat-icon></a>
     </div>    
 </mat-toolbar>
 

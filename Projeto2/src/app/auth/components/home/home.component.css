@@ -1,0 +1,237 @@
+.home{
+    text-align: center;
+}
+
+.Bt_Deslogar{
+    color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #673ab7;
+    width: 20%;
+    transform: scale(1);
+    transition: 1s;
+    font-size: 1.7vw;
+}
+
+.Bt_Deslogar mat-icon{
+    font-size: 2vw;
+}
+
+.Bt_Deslogar:hover{
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+.div_Table{
+    margin-bottom: 50px;
+}
+
+.userEditar{
+    width: 33%;
+    text-align: center;
+    margin: 50px auto 120px auto;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    box-shadow: 2px 5px 8px rgba(10, 10, 10, 0.4);
+    background: white;
+}
+
+.userEditar mat-form-field{
+    width: 80%;
+}
+
+.div_Botoes{
+    margin: 10px auto 25px auto;
+}
+
+.div_Botoes button{
+    margin: auto 20px;
+}
+
+h1{
+    font-size: 4vw;
+}
+
+h4{
+    font-size: 3vw;
+}
+
+span{
+    color: #673ab7;
+    font-size: 3vw;
+}
+
+table{
+    margin: auto;
+    border-collapse: collapse;
+    width: 90%;
+}
+
+thead{
+    background: black;
+    color: #673ab7;
+    font-size: 2vw;
+}
+
+tbody{
+    font-size: 1.5vw;
+}
+
+tbody button{
+    border: none;
+}
+
+tr{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+td, th{
+    padding: 5px 0px;
+}
+
+/* ******** Responsivo ******** */
+@media screen and (min-width: 200px) and (max-width: 500px){
+    .home h1{
+        font-size: 4.5vw;
+    }
+
+    .home h1 span{
+        font-size: 3.2vw;
+    }
+
+    .home h4 {
+        font-size: 3.5vw;
+    }
+
+    .Bt_Deslogar {
+        width: 30%;
+        font-size: 3.5vw;
+    }
+
+    .Bt_Deslogar mat-icon{
+        margin-top: 10px;
+        font-size: 3.5vw;
+    }
+
+    thead{
+        font-size: 4vw;
+    }
+
+    tbody{
+        font-size: 3.4vw;
+    }
+
+    .userEditar{
+        width: 90%;
+    }
+
+    .userEditar h1{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+    .Bt_Deslogar {
+        font-size: 3.7vw;
+        width: 25%;
+        padding: 10px;
+    }
+
+    .Bt_Deslogar mat-icon{
+        margin-bottom: 10px;
+        font-size: 3.5vw;
+    }
+
+    .home h4 {
+        font-size: 3.2vw;
+    }
+
+    thead {
+        font-size: 3.1vw;
+    }
+
+    tbody{
+        font-size: 2.7vw;
+    }
+
+    .userEditar{
+        width: 80%;
+    }
+
+    .userEditar h1{
+        font-size: 2.5rem;
+    }
+
+    .userEditar mat-label{
+        font-size: 1.5rem;
+    }
+
+    .userEditar input{
+        font-size: 1.5rem;
+    }
+
+    .div_Botoes button{
+        font-size: 1.5rem;
+        padding: 10px 15px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1270px){
+    .userEditar{
+        width: 80%;
+    }
+
+    .userEditar h1{
+        font-size: 3.5rem;
+    }
+
+    .userEditar mat-label{
+        font-size: 2.1rem;
+    }
+
+    .userEditar input{
+        font-size: 2.1rem;
+    }
+
+    .div_Botoes{
+        margin: 40px auto 60px auto;
+    }
+
+    .div_Botoes button{
+        font-size: 2.1rem;
+        padding: 10px 15px;
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .home h1{
+        font-size: 2.5vw;
+    }
+
+    .home h1 span{
+        font-size: 1.7vw;
+    }
+    
+    .home h4{
+        font-size: 2vw;
+        font-weight: normal;
+    }
+
+    .Bt_Deslogar{
+        font-size: 1.2vw;
+        width: 17%;
+        padding: 2px;
+    }
+
+    .Bt_Deslogar mat-icon {
+        font-size: 2vw;
+        margin-bottom: 7px;
+    }
+
+    thead{
+        font-size: 1.5vw;
+    }
+
+    tbody{
+        font-size: 1.2vw;
+    }
+}

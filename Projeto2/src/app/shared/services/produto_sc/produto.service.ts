@@ -17,7 +17,8 @@ export class ProdutoService {
     headers: new HttpHeaders({
       'Content-Type' : 'application/json',
       'Cache-Control': 'no-cache',
-      'Access-Control-Allow-Origin': '*', 
+      //'Authorization': 'Bearer ' + localStorage.getItem("token"),
+      //'Access-Control-Allow-Origin': '*', 
       //'Access-Control-Allow-Methods': 'HEAD, GET, POST, PUT, PATCH, DELETE', 
       //'Access-Control-Allow-Headers': '*',
     }) 
@@ -28,7 +29,7 @@ export class ProdutoService {
   
   //Obter todos os produtos
   getProdutos(): Observable<any>{
-    return this.http.get<Produto[]>(this.url + 'Produtos_SelecionarTodos_Get');
+    return this.http.get<Produto[]>(this.url + 'Produtos_SelecionarTodos_Get', this.httpOption);
   }
 
   //Obter produto pelo id

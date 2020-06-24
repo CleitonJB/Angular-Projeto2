@@ -12,7 +12,7 @@ footer p{
     color: white;
 }
 
-footer p a{
+footer p span{
     text-decoration: none;
-    color: rgb(5, 134, 255);
+    color: rgb(103, 58, 183);
 }

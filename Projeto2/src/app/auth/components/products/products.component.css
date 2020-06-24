@@ -1,12 +1,27 @@
 /* ------------ PRIMEIRO BLOCO ------------*/
 .div_Table{
     padding: 20px;
-    max-width: 60%;
+    width: 75%;
     margin: 40px auto 110px auto;
     text-align: center;
     border: 1px solid lightgray;
     border-radius: 10px;
     box-shadow: 2px 5px 8px rgba(10, 10, 10, 0.4);
+    background: white;
+}
+
+h1{
+    font-size: 3vw;
+}
+
+tr {
+    text-align: center;
+}
+
+thead{
+    background: black;
+    color: white;
+    font-weight: normal;
 }
 
 td{
@@ -15,49 +30,23 @@ td{
     color: black;
 }
 
-tr {
-    text-align: center;
-}
-
-th{
-    background: black;
-    color: white;
-    font-weight: normal;
-    padding: 4px 0px;
-}
-
 table{
-    max-width: 100%;
+    width: 100%;
     border-collapse: collapse;
     margin: auto;
     padding: 10px;
 }
 
+thead{
+    font-size: 1.5vw;
+}
+
+tbody{
+    font-size: 1.2vw;
+}
+
 .tableButton{
     border: none;
-}
-
-@media screen and (max-width: 450px){
-    table{
-       width: 90%;
-    }
-
-    table th{
-        width: auto;
-        font-size: 2.4vw;
-    }
-
-    table td{
-        font-size: 2.2vw;
-    }
-
-    mat-icon{
-        max-width: 5%;
-    }
-}
-
-.id{
-    width: 7%;
 }
 
 .descricao{
@@ -76,6 +65,7 @@ table{
     border-radius: 10px;
     padding: 20px 0px;
     box-shadow: 2px 5px 8px rgba(10, 10, 10, 0.4);
+    background: white;
 }
 
 .divAtualizar h1, .divAdicionar h1{
@@ -94,9 +84,124 @@ mat-form-field {
 
 .formButtons{
     margin: auto;
+    display: flex;
+    flex-direction: horizontal;
 }
 
 .formButtons button {
-    margin: 0px 20px;
-    width: 20%;
+    font-size: 1rem;
+    width: 25%;
+    margin: auto;
+}
+
+.formButtons mat-icon{
+    font-size: 1.4rem;
+}
+
+/* ******* Responsivo ******* */
+
+@media screen and (min-width: 200px) and (max-width: 500px){
+    .div_Table{
+        width: 100%;
+        padding: 0;
+    }
+    
+    .div_Table h1{
+        font-size: 1.8rem;
+    }
+
+    table{
+        width: 100%;
+    }
+
+    table mat-icon{
+        font-size: 1.2rem;
+    }
+
+    thead{
+        font-size: 0.7rem;
+    }
+
+    tbody{
+        font-size: 0.8rem;
+    }
+
+    .divAdicionar, .divAtualizar {
+        width: 87%;
+    }
+
+    .divAdicionar h1, .divAtualizar h1 {
+        font-size: 1.6rem;
+    }
+
+    .divAdicionar mat-form-field, .divAtualizar mat-form-field {
+        width: 85%;
+    }
+
+    .formButtons button {
+        font-size: 0.6rem;
+        width: 30%;
+    }
+    
+    .formButtons mat-icon{
+        font-size: 1.1rem;
+        margin-right: -4px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1250px){
+    .div_Table {
+        width: 90%;
+    }
+
+    .div_Table h1 {
+        font-size: 3rem;
+    }
+
+    table{
+        width: 97%;
+    }
+
+    table mat-icon{
+        font-size: 1.65rem;
+    }
+
+    thead{
+        font-size: 1.2rem;
+    }
+
+    tbody{
+        font-size: 1.4rem;
+    }
+
+    .divAdicionar, .divAtualizar {
+        width: 95%;
+    }
+
+    .divAdicionar h1, .divAtualizar h1 {
+        font-size: 3rem;
+    }
+
+    mat-label{
+        font-size: 1.7rem;
+    }
+
+    input{
+        font-size: 1.5rem;
+    }
+
+    .formButtons button{
+        font-size: 1.5rem;
+    }
+
+    .formButtons button mat-icon{
+        font-size: 1.7rem;
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .div_Table {
+        width: 70%;
+    }
 }

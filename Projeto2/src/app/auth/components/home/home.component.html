@@ -1,0 +1,75 @@
+<div class="home">
+    <!-- Boas vindas ao usuário -->
+    <h1>Seja bem-vindo,<br> <span>{{currentUser.OPER_nome_operador}}</span></h1>
+
+    <!-- Botão para deslogar -->
+    <button (click)="logout()" class="Bt_Deslogar" mat-stroked-button> Logout <mat-icon matSuffix>logout</mat-icon></button>
+
+    <!-- Lista de usuários cadastrados no sistema -->
+    <h4> Usuários cadastrados: </h4>
+
+    <div class="div_Table">
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Login</th>
+                    <th>Nome</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.OPER_seq_oper}}</td>
+                    <td>{{user.OPER_login}}</td>
+                    <td>{{user.OPER_nome_operador}}</td>
+                    <td>
+                        <button (click)="copyUsuario(user)" mat-stroked-button color="primary"><mat-icon>edit</mat-icon></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Editar usuário -->
+    <div class="userEditar">
+        <h1>Editar usuário</h1>
+
+        <form #userForm="ngForm" (ngSubmit)="updateUsuario(userForm)">
+            <!-- Login -->
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label for="OPER_login">Login</mat-label>
+                    <input matInput type="text" placeholder="Informe o login..." name="OPER_login" #OPER_login="ngModel"
+                    [(ngModel)]="usuario.OPER_login" required>
+                </mat-form-field>
+            </div>
+            
+
+            <!-- Operador -->
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label for="OPER_nome_operador">Operador</mat-label>
+                    <input matInput type="text" placeholder="Informe o operador..." name="OPER_nome_operador" #OPER_nome_operador="ngModel"
+                    [(ngModel)]="usuario.OPER_nome_operador" required>
+                </mat-form-field>
+            </div>
+            
+            <!-- Senha -->
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label for="OPER_senha">Senha</mat-label>
+                    <input matInput type="password" placeholder="Informe a senha..." name="OPER_senha" #OPER_senha="ngModel" required
+                    [(ngModel)]="usuario.OPER_senha">
+                </mat-form-field>
+            </div>
+
+            <!-- Botões -->
+            <div class="div_Botoes">
+                <button mat-stroked-button color="primary" [disabled]="userForm.invalid" type="submit"><mat-icon>save</mat-icon> Enviar</button>
+                <button  mat-stroked-button (click)="limparForm(userForm)" type="submit"><mat-icon>clear</mat-icon> Limpar</button>
+            </div>
+        </form>
+    </div>
+</div>

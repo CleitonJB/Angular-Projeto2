@@ -32,6 +32,7 @@ export class ProductsComponent implements OnInit {
     console.log('Carregando produtos...');
     this.produtoService.getProdutos().subscribe((produtos: Produto[]) => {
       this.produtos = produtos;
+      console.log('Produtos prontos!');
     });
   }
 

@@ -1,4 +1,4 @@
-export interface User {
+export class User {
     OPER_seq_oper: number;
     OPER_login: string;
     OPER_senha: string;
@@ -7,4 +7,5 @@ export interface User {
     dat_inclusao: Date;
     cod_oper_alt: number;
     dat_alteracao: Date;
+    token?: string;
 }

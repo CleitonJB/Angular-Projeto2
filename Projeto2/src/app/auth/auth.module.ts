@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+/* meus imports */
 import { AuthRoutingModule } from './auth-routing.module';
 //Componentes
+import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
@@ -20,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';              
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ResetPasswordComponent, ProductsComponent],
+  declarations: [LoginComponent, RegisterComponent, ResetPasswordComponent, ProductsComponent, HomeComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -39,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent, 
     RegisterComponent, 
     ResetPasswordComponent,
-    ProductsComponent
+    ProductsComponent,
+    HomeComponent
   ]
 })
 export class AuthModule { }

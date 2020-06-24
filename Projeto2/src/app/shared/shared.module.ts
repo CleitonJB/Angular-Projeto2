@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';              
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 
+
 @NgModule({
   declarations: [ColumnOneComponent, HeaderComponent, FooterComponent],
   imports: [
@@ -21,11 +22,11 @@ import { FooterComponent } from './components/footer/footer.component';
     ReactiveFormsModule,           // formulários reactive
     RouterModule,                 //para o routerLink funcionar
     MatToolbarModule,             //Angular material
-    MatIconModule
+    MatIconModule,
   ],
   exports: [
     ColumnOneComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class SharedModule { }

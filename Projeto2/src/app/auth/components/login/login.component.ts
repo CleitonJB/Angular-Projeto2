@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 //meus imports
-import { AuthService } from 'src/app/shared/services/auth_sc/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+
+import { AuthService } from '../../../shared/services/auth_sc/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,17 +14,21 @@ import { first } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  
+  loading = false;
+  submitted = false;
   returnUrl: string;
+  error = '';
+
+  logado = false;
 
   constructor(
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-  ) { 
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService
+  ) {
     // redirect to home if already logged in
-    if(this.authService.currentUserValue){
+    if (this.authService.currentUserValue) { 
       this.router.navigate(['/']);
     }
   }
@@ -31,42 +36,44 @@ export class LoginComponent implements OnInit {
   ngOnInit() { 
     this.loginForm = this.formBuilder.group({
       OPER_login: ['', Validators.required],
-      OPER_senha: ['', Validators.required],
+      OPER_senha: ['', Validators.required]
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
   }
 
-  // convenience getter for easy access to form fields
-  get f() { return  this.loginForm.controls; }
+  //atalho para acessar os campos do formulario
+  get fval() { return this.loginForm.controls; }
 
-  onSubmit(){
-    // stop here if form is invalid
+  onFormSubmit(){
+    this.submitted = true;
+
+    //se formulario invalido retorna para o mesmo
     if(this.loginForm.invalid){
       return;
     }
 
-    this.authService.loginUser(this.f.OPER_login.value, this.f.OPER_senha.value).pipe(
-      first()).subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    this.loading = true;
+    this.authService.login(this.fval.OPER_login.value, this.fval.OPER_senha.value)
+      .pipe(first())
+        .subscribe(
+          data => {
+            if(data !== 'eof'){
+              console.log('logado: ', data);
+              this.authService.logado = true;
+              this.router.navigate([this.returnUrl]);
+            }else{
+              this.error = 'Usuário não encontrado';
+              console.log('erro: ', data);
+              this.authService.logado = false;
+              this.router.navigate(['/login']);
+            }
+          },
+          error => {
+            this.error = 'Server: ' +error;
+            this.loading = false;
+            window.alert('Erro ao conectar com o servidor');
+          });
   }
-
-  /*
-  {
-    "OPER_login": "ADM",
-    "OPER_senha": 123456,
-  }
-
-  {
-    "OPER_login": "AMARO",
-    "OPER_senha": 123456,
-  }
-  */
 }

@@ -14,8 +14,9 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSubmit(f: NgForm){
-    console.log(f.value);
-    console.log(f.valid);
+    //console.log(f.value);
+    //console.log(f.valid);
+    window.alert('Função ainda não disponível. Tente mais tarde :)');
   }
 
 }

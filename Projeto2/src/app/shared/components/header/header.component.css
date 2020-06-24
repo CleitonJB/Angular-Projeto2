@@ -4,7 +4,11 @@ mat-toolbar{
     background: black;
     margin-bottom: 10px;
     color: white;
-    border-bottom: 2px solid rgb(5, 134, 255);
+    border-bottom: 2px solid rgb(103, 58, 183);
+}
+
+mat-icon{
+    color: rgba(103, 58, 183, 0.75);
 }
 
 .div_Logo{
@@ -12,75 +16,10 @@ mat-toolbar{
     left: 10px;
 }
 
-.div_Logo h1{
+.div_Logo a{
     font-size: 2vw;
-}
-
-/* RESPONSIVO */
-@media screen and (min-width: 50px){
-    .div_Logo h1{
-        font-size: 5.6vw;
-    }
-
-    .div_Buttons a{
-        font-size: 2.4vw;
-        margin: 10px;
-    }
-}
-
-@media screen and (max-width: 550px){
-    .div_Logo h1{
-        font-size: 5.6vw;
-    }
-
-    .div_Buttons a{
-        font-size: 2.4vw;
-        margin: 10px;
-    }
-}
-
-@media screen and (min-width: 550px){
-    .div_Logo h1{
-        font-size: 4.6vw;
-    }
-
-    .div_Buttons a{
-        font-size: 2.2vw;
-        margin: 40px;
-    }
-}
-
-@media screen and (max-width: 800px){
-    .div_Logo h1{
-        font-size: 3.2vw;
-    }
-
-    .div_Buttons a{
-        font-size: 2.2vw;
-        margin: 30px;
-    }
-}
-
-@media screen and (min-width: 800px){
-    .div_Logo h1{
-        font-size: 3.2vw;
-    }
-
-    .div_Buttons a{
-        font-size: 2.2vw;
-        margin: 30px;
-    }
-}
-
-@media screen and (min-width: 1000px){
-    .div_Logo h1{
-        font-size: 2.7vw;
-    }
-
-    .div_Buttons a{
-        font-size: 1.7vw;
-        margin: 20px;
-    }
+    color: white;
+    text-decoration: none;
 }
 
 .div_Buttons{
@@ -92,3 +31,28 @@ mat-toolbar{
     color: white;
     text-decoration: none;
 }   
+
+/* RESPONSIVO */
+@media screen and (max-width: 500px){
+    .div_Logo a{
+        font-size: 5vw;
+    }
+
+    .div_Logo mat-icon{
+        font-size: 4.8vw;
+    }
+
+    .div_Buttons a{
+        font-size: 4vw;
+    } 
+
+    .div_Buttons mat-icon{
+        font-size: 3.5vw;
+    }
+}
+
+@media screen and (min-width: 800px){
+    .div_Buttons a{
+        margin: auto 40px;
+    } 
+}

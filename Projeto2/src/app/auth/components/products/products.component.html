@@ -1,5 +1,3 @@
-<!-- <p>products works!</p> -->
-
 <!-- ********* SEGUNDO BLOCO ********* -->
 <div class="div_Table">
     <h1>Lista de produtos</h1>
@@ -7,15 +5,14 @@
     <table>
         <thead>
           <tr>
-            <th class="id"> id </th>
+            <th> id </th>
             <th> Descrição   </th>
-            <th> Cod inc     </th>
+            <th> C.I.     </th>
             <th> Inclusão    </th>
-            <th> Cod alt     </th>
+            <th> C.A.     </th>
             <th> Alteracão   </th>
-            <th>             </th>
             <th>             
-              <button type="button" (click)="adicionar = !adicionar" title="Adicionar um novo produto" mat-stroked-button color="primary">
+              <button (click)="adicionar = !adicionar" title="Adicionar um novo produto" mat-stroked-button color="primary">
                 <mat-icon>add</mat-icon>
               </button>
             </th>
@@ -56,9 +53,9 @@
     
     <!-- Botões do formulário -->
     <div class="formButtons">
-      <button mat-stroked-button type="submit" color="primary">Salvar</button>
-      <button mat-stroked-button type="reset" (click)="cleanForm(prodForm)">Limpar</button>
-      <button mat-stroked-button type="reset" (click)="cancelar()" color="warn">Cancelar</button>
+      <button [disabled]="prodForm.invalid" mat-stroked-button type="submit" color="primary"><mat-icon>save</mat-icon> Salvar</button>
+      <button mat-stroked-button type="reset" (click)="cleanForm(prodForm)"><mat-icon>clear</mat-icon> Limpar</button>
+      <button mat-stroked-button type="reset" (click)="cancelar()" color="warn"><mat-icon>cancel</mat-icon> Cancelar</button>
     </div>
   </form>
 </div>
@@ -92,9 +89,9 @@
 
       <!-- Botões do formulário -->
       <div class="formButtons">
-        <button mat-stroked-button type="submit" color="primary">Salvar</button>
-        <button mat-stroked-button type="reset" (click)="cleanForm(prodForm)">Limpar</button>
-        <button mat-stroked-button type="reset" (click)="cancelar()" color="warn">Cancelar</button>
+        <button [disabled]="prodForm.invalid" mat-stroked-button type="submit" color="primary"><mat-icon>save</mat-icon> Salvar</button>
+        <button mat-stroked-button type="reset" (click)="cleanForm(prodForm)"><mat-icon>clear</mat-icon> Limpar</button>
+        <button mat-stroked-button type="reset" (click)="cancelar()" color="warn"><mat-icon>cancel</mat-icon> Cancelar</button>
       </div>
     </form>
   </div>
